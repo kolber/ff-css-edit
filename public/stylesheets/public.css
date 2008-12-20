@@ -1,0 +1,112 @@
+/* Base styles (reset browser vendor defaults) */
+body { font-size: 62.5%; line-height: 1.4; }
+body, h1, h2, h3, h4, h5, h6, p, a, label, table, legend, ul, ol, li, dl, dt, dd, abbr, span { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+a img { border: none; }
+img { display: block; }
+
+
+/* Generic overwrites */
+
+h1, 
+h2,
+legend,
+label,
+a,
+p,
+ol li p,
+ul li { color: #0063DC; }
+
+a { border-bottom: 1px solid #FF4D00; text-decoration: none; }
+
+a:hover,
+a:visited {
+	border-bottom: 1px solid;
+}
+
+p { margin: 1px 0px 3px; }
+p span.comment { color: inherit; }
+
+em { color: #FF4D00; font-style: normal; }
+
+ol { color: #FF4D00; margin: 0px 0px 7px 0px; *margin: 0px 0px 0px 24px; }
+
+fieldset { border: 0px; padding: 0px; margin: 0px; }
+fieldset legend { display: none; }
+input { margin: 7px 0px; }
+
+hr { display: block; clear: both; visibility: hidden; height: 0; margin: 0; padding: 0; border: 0; *margin: -15px 0px 0px; }
+
+a.demo-link { border-bottom: 1px solid #FF4D00; background: #FDDAC5; }
+a.demo-link:hover { border-bottom: 0px solid; }
+a.demo-link:visited { border-bottom: 1px solid #0063DC; background: #FDDAC5; }
+
+/* Markup-specific style */
+
+div#wrapper { width: 740px; margin: 0 auto; }
+
+ul#navigation,
+div#authors,
+h2.introduction-title { display: block; margin: 0px; padding: 15px 0px 8px 0px; border-bottom: 1px solid #0063DC; font-size: 1.2em; }
+
+ul#navigation { list-style-type: none; width: 404px; float: left; }
+ul#navigation li { display: block; float: left; margin: 0px 20px 0px 0px; }
+ul#navigation a { border-bottom: 0px; font-size: 1em; }
+div#authors { width: 278px; float: left; margin: 0px 0px 0px 56px; }
+
+h2.introduction-title { width: 122px; font-weight: normal; }
+h1.introduction { float: left; display: block; width: 715px; padding: 15px 0px 20px 0px; font-size: 52px; font-weight: normal; color: #0063DC; line-height: 1.2; font-weight: lighter; letter-spacing: 1px; }
+h1.introduction span { color: #FF4D00; }
+img#coming-soon { float: left; margin: 20px 0px 0px; }
+
+h2.title { padding: 15px 0px 3px 5px; display: block; float: left; width: 117px; margin: 0px 20px 0px 0px; font-size: 1.2em; font-weight: normal; background: transparent url(../images/arrow-bg.gif) no-repeat 0px 0px; color: #fff; }
+
+div.information,
+div.information-wide,
+form#notification-signup { float: left; width: 262px; padding: 15px 0px 0px; margin: 0; font-size: 1.2em; }
+div.information img { border: 1px solid #eee; padding: 3px; }
+div.information-wide { width: 470px; }
+
+div#wrapper div.second,
+form#notification-signup { margin: 0px 0px 0px 56px; }
+
+form fieldset { width: 320px; }
+form p { color: #FF4D00; }
+form label { width: 60px; display: block; float: left; padding: 10px 0px 0px; }
+form input { float: left; }
+form br { clear: both; }
+form label.follower { float: left; margin: 0px 0px 0px 5px; }
+
+form input#account_uri { width: 85px; }
+
+div#notification-thanks { margin-left: 56px; }
+
+div#footer { clear: both; margin: 15px 0px 0px; padding: 15px 0px; font-size: 1.2em; border-top: 1px solid #0063DC; }
+div#footer p { margin: 0px; padding: 0px; }
+div#footer p.disclaimer { margin-top: 2px; }
+
+/*
+
+	Errors
+
+*/
+
+div.error,
+div.notification { border: 2px solid #0063DC; padding: 10px; width: 360px; margin: -10px 0px 10px -10px; }
+
+div.error h2,
+div.notification h2 { color: #0063DC; font-size: 1.0em; font-weight: normal; padding: 0px 0px 8px; border-bottom: 1px solid #0063DC; display: inline; }
+div.notification ol,
+div.error ol { list-style-type: decimal; padding: 0px 0px 0px 18px; margin: 18px 0px 0px; }
+div.error p,
+div.notification p { margin: 18px 0px 0px; }
+div.notification ul li,
+div.error ol li { margin: 0px 0px 3px; color: #0063DC; }
+
+fieldset#login { margin: 10px 0px 0px; }
+fieldset#login input { margin: 1px 5px 10px 0px; }
+fieldset#login label { width: 120px; padding: 3px 0px 0px 0px; }
+
+button { display: block; float: left; margin: 0px 7px 0px 0px; background-color: #FF4D00; border: 1px solid #FF4D00; color: #fff; font-family: inherit; font-size: 1.0em; line-height: 1.3; cursor: pointer; -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; }
+button { width: auto; overflow: visible; padding: 1px 7px 0px 4px; /* IE6 */ }
+button[type]{ padding: 1px 7px 1px 3px; /* Firefox */ line-height: 17px; /* Safari */ }
+*:first-child+html button[type]{ padding: 1px 7px 2px 4px; /* IE7 */ }

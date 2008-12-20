@@ -1,0 +1,62 @@
+<div id="edit-header">
+	<h3>Edit Mode:</h3>
+	<div id="toggles">
+		<p><a href="#" id="edit-css-action">Edit CSS</a></p>
+	</div>
+	<hr>
+</div>
+<div id="container">
+	<div id="header-information">
+		<h1><a href="/<%= @user.hash %>"><%= @user.name %>&rsquo;s Folio</a></h1>
+		<p><a href="mailto:<%= @user.email %>"><%= @user.email %></a></p>
+		<hr>
+	</div>
+
+	<div id="project-information">
+		<h2>Project:</h2>
+		<p class="year">2008</p>
+		<div class="projects-by-year">
+			<p class="month">Jul</p>
+		</div>
+		<img src="/images/thumb.jpg" alt="">
+		<h3>Project Title</h3>
+		<h4>Keyword 1, Keyword 2, Keyword 3</h4>
+		<p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, diam non ornare sollicitudin, leo arcu tristique purus, eu tristique leo nibh vestibulum orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean dolor felis, imperdiet.</p>
+		<p>&larr; <a href="/<%= @user.hash %>">Back to Projects</a></p>
+	</div>
+
+	<div id="project-images">
+		<div class="image">
+			<img src="/images/large01.jpg" alt="">
+		</div>
+		<div class="image">
+			<img src="/images/large01.jpg" alt="">
+		</div>
+		<div class="image">
+			<img src="/images/large01.jpg" alt="">
+		</div>
+	</div>
+
+	<div id="copyright">
+		<p>All work &copy; Copyright <%= @user.name %>, 2008 <a href="http://www.ffolio.net" title="Hosted Flickr Portfolios">Created &amp; Hosted by FFolio</a></p>
+	</div>
+</div>
+<div id="edit-css">
+	<div id="edit-css-header">
+		<p>Edit CSS Mode:</p>
+		<div id="primary-actions">
+			<button type="submit" id="edit-css-save-action">&#x2713; Save CSS</button>
+			<button type="submit" class="secondary" id="edit-css-cancel-action">&times; Close without saving</button>
+		</div>
+	</div>
+	<div id="edit-css-toolbar">
+		<label>Go to line: </label><input type="text" id="edit-css-goto-line">
+		<label>Find: </label><input type="text" id="edit-css-find">
+	</div>
+	<div id="edit-css-lines">
+		<p>...</p>
+	</div>
+<textarea name="Name" id="edit-css-editor" rows="8" cols="40" wrap="off">
+<%= CGI.unescape(@user.css) %>
+</textarea>
+</div>

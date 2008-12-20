@@ -1,0 +1,81 @@
+<div id="edit-header">
+	<h3>Edit Mode:</h3>
+	<div id="toggles">
+		<p><a href="#" id="edit-css-action">Edit CSS</a></p>
+	</div>
+	<hr>
+</div>
+<div id="container">
+	<div id="header-information">
+		<h1><%= @user.name %>&rsquo;s Folio</h1>
+		<p><a href="mailto: <%= @user.email %>"> <%= @user.email %></a></p>
+		<div id="search-projects-container">
+			<label for="search-projects">Search Projects:<span>&rarr;</span></label>
+			<input type="text" id="search-projects">
+		</div>
+		<hr>
+	</div>
+	<h2>Projects</h2>
+
+	<div class="projects">
+		<p class="year">2008</p>
+		<div class="projects-by-year">
+			<p class="month">Jul</p>
+			<div class="project">
+				<a href="/<%= @user.hash %>/projects/project-title/"><img src="/images/thumb.jpg" alt=""></a>
+				<h3>
+					<a href="/<%= @user.hash %>/projects/project-title/">Project Title</a>
+				</h3>
+				<h4>Keyword 1, Keyword 2, Keyword 3</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet diam id urna gravida venenatis. Quisque nibh ante, convallis vel, suscipit in, pretium....</p>
+			</div>
+		</div>
+		<p class="year">2008</p>
+		<div class="projects-by-year">
+			<p class="month">Feb</p>
+			<div class="project">
+				<a href="/<%= @user.hash %>/projects/project-title/"><img src="/images/thumb.jpg" alt=""></a>
+				<h3>
+					<a href="/<%= @user.hash %>/projects/project-title/">Project Title</a>
+				</h3>
+				<h4>Keyword 1, Keyword 2, Keyword 3</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet diam id urna gravida venenatis. Quisque nibh ante, convallis vel, suscipit in, pretium....</p>
+			</div>
+		</div>
+		<p class="year">2007</p>
+		<div class="projects-by-year">
+			<p class="month">Dec</p>
+			<div class="project">
+				<a href="/<%= @user.hash %>/projects/project-title/"><img src="/images/thumb.jpg" alt=""></a>
+				<h3>
+					<a href="/<%= @user.hash %>/projects/project-title/">Project Title</a>
+				</h3>
+				<h4>Keyword 1, Keyword 2, Keyword 3</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet diam id urna gravida venenatis. Quisque nibh ante, convallis vel, suscipit in, pretium....</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="copyright">
+		<p>All work &copy; Copyright <%= @user.name %>, 2008 <a href="http://www.ffolio.net" title="Hosted Flickr Portfolios">Created &amp; Hosted by FFolio</a></p>
+	</div>
+</div>
+<div id="edit-css">
+	<div id="edit-css-header">
+		<p>Edit CSS Mode:</p>
+		<div id="primary-actions">
+			<button type="submit" id="edit-css-save-action">&#x2713; Save CSS</button>
+			<button type="submit" class="secondary" id="edit-css-cancel-action">&times; Close without saving</button>
+		</div>
+	</div>
+	<div id="edit-css-toolbar">
+		<label>Go to line: </label><input type="text" id="edit-css-goto-line">
+		<label>Find: </label><input type="text" id="edit-css-find">
+	</div>
+	<div id="edit-css-lines">
+		<p>...</p>
+	</div>
+<textarea name="edit-css-editor" id="edit-css-editor" rows="8" cols="40" wrap="off">
+<%= CGI.unescape(@user.css) %>
+</textarea>
+</div>
