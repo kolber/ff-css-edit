@@ -22,24 +22,24 @@ end
 
 DataMapper.auto_upgrade!
 
+#default
+
+get '/' do
+  erb :not_found
+end
 
 # new
 get '/newnew' do
-  erb :new
+  erb :new, :layout => false
 end
 
 post '/newnew' do
-  @user = User.new(:name => params[:user_name], :email => params[:user_email], :hash => Digest::SHA1.hexdigest([Time.now, rand].join), :css => "%2F%2A%0A%0A++Colours%2Ftypography%0A%0A%2A%2F%0A%0Abody+%7B+font-family%3A+helvetica%2C+arial%2C+sans-serif%3B+font-size%3A+150%25%3B+color%3A+%23000%3B+line-height%3A+1.35em%3B+%7D%0A%0Ah4+%7B+color%3A+%23B2B2B2%3B+%7D%0A%0Ap%2C%0Aa+%7B+color%3A+%23fff%3B+%7D%0A%0Ap+a%2C%0Ap+span+%7B+font-size%3A+1.0em%3B+color%3A+%23666%3B+%7D%0A%0Ah1%2C+%0Ah2%2C+%0Ah3+%7B+font-size%3A+1.4em%3B+line-height%3A+1.6em%3B+%7D%0A%0Ah1+a+%7B+color%3A+inherit%3B+text-decoration%3A+none%3B+font-weight%3A+bold%3B+%7D%0A%0Ah3%2C%0Ah3+a+%7B+font-weight%3A+normal%3B+color%3A+inherit%3B+%7D%0A%0Ah4%2C%0Ap%2C+%0Alabel%2C%0Ainput+%7B+font-size%3A+1.2em%3B+line-height%3A+1.6em%3B+font-weight%3A+normal%3B+padding%3A+0%3B+%7D%0A%0Ap.year+%7B+color%3A+%23B2B2B2%3B+%7D%0A%0A%23search-projects-container+label+%7B+color%3A+%23666%3B+%7D%0A%0A%23search-projects-container+label+span+%7B+color%3A+%23B2B2B2%3B+%7D%0A%0A%23search-projects-container+input+%7B+background-color%3A+%23D9D9D9%3B+color%3A+%23666%3B+border%3A+0px+solid%3B+border-right%3A+1px+solid+%23B2B2B2%3B+border-bottom%3A+1px+solid+%23B2B2B2%3B+padding%3A+4px%3B+line-height%3A+1em%3B+%7D%0A%0A%2F%2A+%0A%0A++General%2Flayout%0A%0A%2A%2F%0A%0Aa+img+%7B+border%3A+0%3B+%7D%0A%0A%23container+%7B+margin%3A+0+40px%3B+%7D%0A%0A%23header-information+%7B+padding-bottom%3A+10px%3B+border-bottom%3A+1px+dashed%3B+margin-bottom%3A+20px%3B+%7D%0A%0A%23header-information+p+%7B+margin%3A+0%3B+%7D%0A%0A%23search-projects-container+%7B+position%3A+absolute%3B+top%3A+28px%3B+left%3A+240px%3B+display%3A+none%3B+%7D%0A%0A%23search-projects-container+span+%7B+margin%3A+0px+8px%3B+%7D%0A%0A%23project-information+%7B+width%3A+310px%3B+float%3A+left%3B+%7D%0A%0A%23project-information+p.year%2C%0A%23project-information+p.month+%7B+clear%3A+none%3B+margin%3A+15px+0px+0px+0px%3B+%2Amargin%3A+5px+0px+0px+0px%3B+%7D%0A%0A%23project-information+img+%7B+clear%3A+both%3B+display%3A+block%3B+margin%3A+0px+0px+8px%3B+%7D%0A%0A%23project-information+.project-description%2C%0A%23container+%23project-information+h4+%7B+padding%3A+0px+20px+3px+0px%3B+%7D%0A%0A%23project-images+%7B+float%3A+left%3B+width%3A+550px%3B+margin-bottom%3A+7px%3B+%7D%0A%0A%23project-images+img+%7B+float%3A+left%3B+margin%3A+6px+12px+0px+0px%3B+%7D%0A%0A%23copyright+%7B+clear%3A+both%3B+margin%3A+10px+0px+0px+0px%3B+border-top%3A+1px+dashed%3B+%7D%0A%0A%23copyright+a+%7B+margin-left%3A+10px%3B+%7D%0A%0A%2F%2A+%0A%0A++Detailed+layout+%0A%0A%2A%2F%0A%0Ah1+%7B+margin%3A+0px%3B+%7D%0A%0Ah2+%7B+width%3A+170px%3B+float%3A+left%3B+%7D%0A%0Adiv.projects+%7B+float%3A+left%3B+%7D%0A%0Ap.year+%7B+display%3A+block%3B+width%3A+70px%3B+clear%3A+both%3B+float%3A+left%3B+margin%3A+14px+0px+0px+0px%3B+%2Amargin%3A+4px+0px+0px+0px%3B+%7D%0A%0Adiv.projects-by-year+%7B+float%3A+left%3B+%7D%0A%0Ap.month+%7B+width%3A+70px%3B+clear%3A+both%3B+float%3A+left%3B+display%3A+block%3B+margin%3A+14px+0px+0px+0px%3B+%2Amargin%3A+4px+0px+0px+0px%3B+%7D%0A%0Adiv.project+%7B+float%3A+left%3B+width%3A+750px%3B+margin-bottom%3A+7px%3B+%7D%0A%0Adiv.project+img+%7B+float%3A+left%3B+margin%3A+6px+12px+0px+0px%3B+%7D%0A%0Adiv.project+h3%2C%0Adiv.project+h4%2C%0Adiv.project+p%2C%0Adiv%23project-information+h3%2C%0Adiv%23project-information+h4%2C%0Adiv%23project-information+p+%7B+margin%3A+0px+0px+3px+0px%3B+padding%3A+0%3B+%7D%0A%0Adiv.project+h3+%7B+margin-top%3A+10px%3B+%7D%0A%0Ah4.empty-result+%7B+margin-top%3A+11px%3B+%7D%0A%0Adiv.project+h4+%7B+display%3A+block%3B+height%3A+1.35em%3B+overflow%3A+hidden%3B+%7D%0A%0Adiv.project+h4+span+%7B+display%3A+block%3B+%7D%0A%0Adiv%23project-information+p+%7B+margin-bottom%3A+4px%3B+%7D%0A")
+  @user = User.new(:name => params[:user_name], :email => params[:user_email], :hash => Digest::SHA1.hexdigest([Time.now, rand].join), :css => "/*%0A%0A%20%20Colours/typography%0A%0A*/%0A%0Abody%20%7B%20font-family%3A%20helvetica%2C%20arial%2C%20sans-serif%3B%20font-size%3A%2062.5%25%3B%20color%3A%20%23000%3B%20line-height%3A%201.35em%3B%20%7D%0A%0Ah4%20%7B%20color%3A%20%23B2B2B2%3B%20%7D%0A%0Ap%2C%0Aa%20%7B%20color%3A%20%23666%3B%20%7D%0A%0Ap%20a%2C%0Ap%20span%20%7B%20font-size%3A%201.0em%3B%20color%3A%20%23666%3B%20%7D%0A%0Ah1%2C%20%0Ah2%2C%20%0Ah3%20%7B%20font-size%3A%201.4em%3B%20line-height%3A%201.6em%3B%20%7D%0A%0Ah1%20a%20%7B%20color%3A%20inherit%3B%20text-decoration%3A%20none%3B%20font-weight%3A%20bold%3B%20%7D%0A%0Ah3%2C%0Ah3%20a%20%7B%20font-weight%3A%20normal%3B%20color%3A%20inherit%3B%20%7D%0A%0Ah4%2C%0Ap%2C%20%0Alabel%2C%0Ainput%20%7B%20font-size%3A%201.2em%3B%20line-height%3A%201.6em%3B%20font-weight%3A%20normal%3B%20padding%3A%200%3B%20%7D%0A%0Ap.year%20%7B%20color%3A%20%23B2B2B2%3B%20%7D%0A%0A%23search-projects-container%20label%20%7B%20color%3A%20%23666%3B%20%7D%0A%0A%23search-projects-container%20label%20span%20%7B%20color%3A%20%23B2B2B2%3B%20%7D%0A%0A%23search-projects-container%20input%20%7B%20background-color%3A%20%23D9D9D9%3B%20color%3A%20%23666%3B%20border%3A%200px%20solid%3B%20border-right%3A%201px%20solid%20%23B2B2B2%3B%20border-bottom%3A%201px%20solid%20%23B2B2B2%3B%20padding%3A%204px%3B%20line-height%3A%201em%3B%20%7D%0A%0A/*%20%0A%0A%20%20General/layout%0A%0A*/%0A%0Aa%20img%20%7B%20border%3A%200%3B%20%7D%0A%0A%23container%20%7B%20margin%3A%200%2040px%3B%20%7D%0A%0A%23header-information%20%7B%20padding-bottom%3A%2010px%3B%20border-bottom%3A%201px%20dashed%3B%20margin-bottom%3A%2020px%3B%20%7D%0A%0A%23header-information%20p%20%7B%20margin%3A%200%3B%20%7D%0A%0A%23search-projects-container%20%7B%20position%3A%20absolute%3B%20top%3A%2028px%3B%20left%3A%20240px%3B%20display%3A%20none%3B%20%7D%0A%0A%23search-projects-container%20span%20%7B%20margin%3A%200px%208px%3B%20%7D%0A%0A%23project-information%20%7B%20width%3A%20310px%3B%20float%3A%20left%3B%20%7D%0A%0A%23project-information%20p.year%2C%0A%23project-information%20p.month%20%7B%20clear%3A%20none%3B%20margin%3A%2015px%200px%200px%200px%3B%20*margin%3A%205px%200px%200px%200px%3B%20%7D%0A%0A%23project-information%20img%20%7B%20clear%3A%20both%3B%20display%3A%20block%3B%20margin%3A%200px%200px%208px%3B%20%7D%0A%0A%23project-information%20.project-description%2C%0A%23container%20%23project-information%20h4%20%7B%20padding%3A%200px%2020px%203px%200px%3B%20%7D%0A%0A%23project-images%20%7B%20float%3A%20left%3B%20width%3A%20550px%3B%20margin-bottom%3A%207px%3B%20%7D%0A%0A%23project-images%20img%20%7B%20float%3A%20left%3B%20margin%3A%206px%2012px%200px%200px%3B%20%7D%0A%0A%23copyright%20%7B%20clear%3A%20both%3B%20margin%3A%2010px%200px%200px%200px%3B%20border-top%3A%201px%20dashed%3B%20%7D%0A%0A%23copyright%20a%20%7B%20margin-left%3A%2010px%3B%20%7D%0A%0A/*%20%0A%0A%20%20Detailed%20layout%20%0A%0A*/%0A%0Ah1%20%7B%20margin%3A%200px%3B%20%7D%0A%0Ah2%20%7B%20width%3A%20170px%3B%20float%3A%20left%3B%20%7D%0A%0Adiv.projects%20%7B%20float%3A%20left%3B%20%7D%0A%0Ap.year%20%7B%20display%3A%20block%3B%20width%3A%2070px%3B%20clear%3A%20both%3B%20float%3A%20left%3B%20margin%3A%2014px%200px%200px%200px%3B%20*margin%3A%204px%200px%200px%200px%3B%20%7D%0A%0Adiv.projects-by-year%20%7B%20float%3A%20left%3B%20%7D%0A%0Ap.month%20%7B%20width%3A%2070px%3B%20clear%3A%20both%3B%20float%3A%20left%3B%20display%3A%20block%3B%20margin%3A%2014px%200px%200px%200px%3B%20*margin%3A%204px%200px%200px%200px%3B%20%7D%0A%0Adiv.project%20%7B%20float%3A%20left%3B%20width%3A%20550px%3B%20margin-bottom%3A%207px%3B%20%7D%0A%0Adiv.project%20img%20%7B%20float%3A%20left%3B%20margin%3A%206px%2012px%200px%200px%3B%20%7D%0A%0Adiv.project%20h3%2C%0Adiv.project%20h4%2C%0Adiv.project%20p%2C%0Adiv%23project-information%20h3%2C%0Adiv%23project-information%20h4%2C%0Adiv%23project-information%20p%20%7B%20margin%3A%200px%200px%203px%200px%3B%20padding%3A%200%3B%20%7D%0A%0Adiv.project%20h3%20%7B%20margin-top%3A%2010px%3B%20%7D%0A%0Ah4.empty-result%20%7B%20margin-top%3A%2011px%3B%20%7D%0A%0Adiv.project%20h4%20%7B%20display%3A%20block%3B%20height%3A%201.35em%3B%20overflow%3A%20hidden%3B%20%7D%0A%0Adiv.project%20h4%20span%20%7B%20display%3A%20block%3B%20%7D%0A%0Adiv%23project-information%20p%20%7B%20margin-bottom%3A%204px%3B%20%7D%0A")
   if @user.save
     redirect "/#{@user.hash}"
   else
     redirect '/newnew'
   end
-end
-
-# doesn't exist
-get '/not-found' do
-  "<h1>Sorry, that user doesn't exist</h1>"
 end
 
 # show
@@ -59,7 +59,7 @@ get '/:hash/projects/*' do
   if @user
     erb :project
   else
-    redirect "/not-found"
+    erb :not_found
   end
 end
 
@@ -68,7 +68,7 @@ get '/:hash' do
   if @user
     erb :index
   else
-    redirect "/not-found"
+    erb :not_found
   end
 end
 
