@@ -8,6 +8,9 @@ var AdvancedTextarea = {
 	
 	init: function(textarea) {
 		this.textarea = textarea;
+		
+		if(!this.textarea) return;
+		
 		this.initEvents();
 		this.updateLineNumbers();
 		this.setSaveState();
