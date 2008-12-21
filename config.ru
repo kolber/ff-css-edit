@@ -1,6 +1,5 @@
 require "minigems"
 require "sinatra"
-require 'ff-css-edit'
 
 root_dir = File.dirname(__FILE__)
 
@@ -15,4 +14,5 @@ log = File.new("./log/sinatra.log", "a")
 STDOUT.reopen(log)
 STDERR.reopen(log)
 
+require 'ff-css-edit'
 run Sinatra.application
