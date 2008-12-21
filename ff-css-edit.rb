@@ -4,6 +4,7 @@ require "dm-core"
 require "dm-timestamps"
 require "digest/sha1"
 require "cgi"
+require "diff"
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/ffcssedit.sqlite3")
 
@@ -39,6 +40,16 @@ post '/newnew' do
     redirect "/#{@user.hash}"
   else
     redirect '/newnew'
+  end
+end
+
+# list
+get '/listlist' do
+  @users = User.all
+  if @users
+    erb :list
+  else
+    erb :not_found
   end
 end
 
