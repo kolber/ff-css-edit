@@ -1,5 +1,6 @@
 require "minigems"
 require "sinatra"
+require 'ff-css-edit'
 
 root_dir = File.dirname(__FILE__)
 
