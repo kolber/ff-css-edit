@@ -4,7 +4,7 @@ require "dm-core"
 require "dm-timestamps"
 require "digest/sha1"
 require "cgi"
-require "diff"
+require "diff/lcs"
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/ffcssedit.sqlite3")
 
