@@ -1,8 +1,8 @@
-require "rubygems"
+require "minigems"
 require "sinatra"
 require "dm-core"
 require "dm-timestamps"
-require "digest"
+require "digest/sha1"
 require "cgi"
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/ffcssedit.sqlite3")
@@ -43,12 +43,14 @@ get '/not-found' do
 end
 
 # show
-get '/:hash' do
+post '/:hash/save-css' do
   @user = User.first(:hash => params[:hash])
   if @user
-    erb :index
+    @user.attributes = { :css => CGI.escape(params[:customcss]) }
+    @user.save
+    "complete"
   else
-    redirect "/not-found"
+    "fail"
   end
 end
 
@@ -58,5 +60,22 @@ get '/:hash/projects/*' do
     erb :project
   else
     redirect "/not-found"
+  end
+end
+
+get '/:hash' do
+  @user = User.first(:hash => params[:hash])
+  if @user
+    erb :index
+  else
+    redirect "/not-found"
+  end
+end
+
+get '/stylesheets/:hash/application-custom.css' do
+  @user = User.first(:hash => params[:hash])
+  if @user
+    content_type 'text/css', :charset => 'utf-8'
+    erb :application_custom, :layout => false
   end
 end

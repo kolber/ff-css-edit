@@ -77,9 +77,10 @@ var FlickrfolioEdit = {
 		/*
 		*	Ajax call
 		*/
+		var hash = (document.URL.split("/")[3]).match(/[\d|\w]+/);
 		$.ajax({
 			type: "POST",
-			url: "/php/save-css.php",
+			url: "/"+hash+"/save-css",
 			data: "customcss="+escape($(AdvancedTextarea.textarea).val()),
 			success: function(msg){
 				if(msg == 'complete') _this.saveCSSCallback();
@@ -88,7 +89,6 @@ var FlickrfolioEdit = {
 			error: function() {
 				Status.statusError('Error', 'There was an error saving your data. Maybe wait a few minutes before trying again.');
 			}
-			
 		})
 	},
 	saveCSSCallback: function() {
