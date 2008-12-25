@@ -1,4 +1,9 @@
-require "minigems"
+begin
+  require "minigems"
+rescue LoadError
+  require "rubygems"
+end
+
 require "sinatra"
 require "dm-core"
 require "dm-timestamps"
