@@ -117,7 +117,7 @@ var AdvancedTextarea = {
 				/*
 				*	Selecting lines is kind of slow at the moment, so temporarily disabled when clicking on a line
 				*/
-				//_this.selectLine($(e.target).text());
+				_this.selectLine($(e.target).text() - 1);
 				return false;
 			}
 		});
