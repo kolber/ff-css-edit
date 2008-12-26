@@ -5,6 +5,8 @@ var AdvancedTextarea = {
 	saveState: '',
 	currentSearchMatchIndex: 1,
 	currentSearch: '',
+	caretPos: 1,
+	currentScrollOffset: 0,
 	
 	init: function(textarea) {
 		this.textarea = textarea;
@@ -47,6 +49,10 @@ var AdvancedTextarea = {
 			_this.updateLineNumbers();
 		});
 		
+		$(this.textarea).blur(function() {
+			_this.saveCaretPos();
+		});
+		
 		// a bunch of event listeners, basically to cover line number updates for copy-paste commands
 		$(this.textarea).keypress(function() { _this.updateLineNumbers(); });
 		$(this.textarea).keyup(function() { _this.updateLineNumbers(); });
@@ -79,6 +85,7 @@ var AdvancedTextarea = {
 				}
 				// command-shift-g/cntrl-shift-g to findPrevious (unicode: 71)
 			}
+			
 		});
 		
 		// textarea - go to line number
@@ -113,13 +120,26 @@ var AdvancedTextarea = {
 					$(e.target).addClass("selected").siblings("a.selected").removeClass("selected");
 					//window.location.hash = "edit:l" + $(e.target).text();
 				 }
-				/*
-				*	Selecting lines is kind of slow at the moment, so temporarily disabled when clicking on a line
-				*/
 				_this.selectLine($(e.target).text() - 1);
 				return false;
 			}
 		});
+	},
+
+	saveCaretPos: function() {
+		// ignore this functionality for ie
+		if(!document.selection) {
+			// save caret position
+			this.caretPos = this.textarea.selectionStart;
+			// save current scroll offset
+			this.currentScrollOffset = this.textarea.scrollTop;
+		}
+	},
+	setCaretPos: function() {
+		// scroll to correct line
+		this.textarea.scrollTop = this.currentScrollOffset;
+		// move caret
+		this.selectRange(this.textarea, this.caretPos, this.caretPos);
 	},
 	
 	alignLineNumbers: function() {
@@ -163,8 +183,6 @@ var AdvancedTextarea = {
 	},
 	
 	selectLine: function(targetLine) {
-		// focus textarea, if not safari
-		if($.browser.mozilla) this.textarea.focus();
 		// if targeted line is within actual number of lines
 		if(targetLine < this.countTextareaLines(this.textarea)) {
 			// move cursor to new line
@@ -190,6 +208,8 @@ var AdvancedTextarea = {
 			range.moveEnd('character', end - start);
 			range.select();
 		} else {
+			// focus textarea, if firefox
+			if($.browser.mozilla) this.textarea.focus();
 			target.setSelectionRange(start, end);
 		}
 	},
@@ -224,6 +244,10 @@ var AdvancedTextarea = {
 			// select match
 			this.selectRange(this.textarea, start, start + str.length);
 		} else {
+			
+			/*
+			*	Replace with something more elegant
+			*/
 			// highlight the fact there was no match
 			alert('no match');
 		}
@@ -241,6 +265,8 @@ var AdvancedTextarea = {
 	
 	setSaveState: function() {
 		this.saveState = escape($(this.textarea).val());
+		// save current line number
+		
 	},
 	
 	revertSaveState: function() {

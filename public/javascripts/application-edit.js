@@ -116,6 +116,8 @@ var FlickrfolioEdit = {
 		$("textarea#edit-css-editor").css("height", $(window).height() - $("textarea#edit-css-editor")[0].offsetTop);
 		// used to resize line number container
 		AdvancedTextarea.updateLineNumbers();
+		// reselect old caret position
+		AdvancedTextarea.setCaretPos();
 		
 		// move things on window resize to keep shit clean no matter what
 		$(window).resize(function() {
