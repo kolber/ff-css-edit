@@ -107,7 +107,7 @@ body#edit div#edit-css-header div#primary-actions button { margin: 2px 7px 0px 0
 
 body#edit div#edit-css div#edit-css-toolbar { font-size: 10px; margin: 2px 7px 5px 40px; overflow: hidden; }
 body#edit div#edit-css div#edit-css-toolbar label { margin: 4px 0px 0px; padding: 0px; color: #666; display: inline; }
-body#edit div#edit-css div#edit-css-toolbar input { display: inline; margin: 0px 10px 0px 7px; font-size: 12px; padding-top: 3px; }
+body#edit div#edit-css div#edit-css-toolbar input { display: inline; margin: 0px 10px 0px 7px; font-size: 12px; padding-top: 3px; color: #666; }
 body#edit div#edit-css div#edit-css-toolbar input#edit-css-goto-line { width: 40px; }
 
 
