@@ -105,13 +105,15 @@ var AdvancedTextarea = {
 		$("div#edit-css-lines").click(function(e) {
 			// use event delegation as line numbers are added dynamically
 			if(e.target.nodeName == "A") {
+				console.debug('click—');
+				e.preventDefault();
 				if($(e.target).is(".selected")) {
 					$(e.target).removeClass("selected");
-					window.location.hash = "edit";
+					//window.location.hash = "edit";
 				} else {
 					$(e.target).addClass("selected").siblings("a.selected").removeClass("selected");
-					window.location.hash = "edit:l" + $(e.target).text();
-				}
+					//window.location.hash = "edit:l" + $(e.target).text();
+				 }
 				/*
 				*	Selecting lines is kind of slow at the moment, so temporarily disabled when clicking on a line
 				*/
