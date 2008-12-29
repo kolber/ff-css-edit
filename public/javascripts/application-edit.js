@@ -81,7 +81,7 @@ var FlickrfolioEdit = {
 		$.ajax({
 			type: "POST",
 			url: "/"+hash+"/save-css",
-			data: "customcss="+escape($(AdvancedTextarea.textarea).val()),
+			data: "customcss="+escape($(AdvancedTextarea.textarea).val().replace(/\+/g, "&#43;")),
 			success: function(msg){
 				if(msg == 'complete') _this.saveCSSCallback();
 				else Status.statusError('Error', 'There was an error saving your data. Maybe wait a few minutes before trying again.');

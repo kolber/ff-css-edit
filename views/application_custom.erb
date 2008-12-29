@@ -1,1 +1,1 @@
-<%= CGI.unescape(@user.css) %>
+<%= CGI.unescape(@user.css).gsub(/&#43;/, "+") %>
