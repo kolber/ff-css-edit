@@ -1,4 +1,4 @@
-speed = 750;
+speed = 350;
 
 var Status = {
 	statusContainer: null,
